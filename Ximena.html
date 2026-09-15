@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mis XV Años — Ximena Mahanaim</title>
+
+<!-- Fuentes Reales: Elegantes, Estilizadas y Ligeras -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Fondo exacto extraído de la imagen */
+  --bg-top: #b5d882;
+  --bg-mid: #93c467;
+  --bg-dark: #6fa644;
+  
+  /* Tonos Reales */
+  --gold-tiara: #f7d560;
+  --gold-light: #fff3a1;
+  --gold-dark: #b89228;
+  --yellow-glow: #ffffb3;
+  --text-dark: #1b330d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-dark) 100%);
+  background-attachment: fixed;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* Canvas de Magia y Destellos */
+#canvas-fireflies {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.icon-svg {
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+}
+
+/* MARCO RECTANGULAR FILIGRANA */
+.royal-frame {
+  position: relative;
+  border: 1px solid var(--gold-tiara);
+  padding: 40px 22px;
+  border-radius: 4px;
+  background: rgba(111, 166, 68, 0.45);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.25), inset 0 0 25px rgba(247, 213, 96, 0.15);
+}
+
+.royal-frame::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(247, 213, 96, 0.5);
+  pointer-events: none;
+}
+
+/* Esquinas de Filigrana SVG */
+.corner-svg {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  color: var(--gold-tiara);
+}
+.corner-tl { top: -2px; left: -2px; }
+.corner-tr { top: -2px; right: -2px; transform: scaleX(-1); }
+.corner-bl { bottom: -2px; left: -2px; transform: scaleY(-1); }
+.corner-br { bottom: -2px; right: -2px; transform: scale(-1); }
+
+/* Separador de Filigrana */
+.filigree-divider {
+  width: 100%;
+  max-width: 220px;
+  height: 28px;
+  color: var(--gold-tiara);
+  margin: 18px auto;
+  display: block;
+}
+
+/* Pantalla de Introducción */
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(circle at 50% 30%, var(--bg-top) 0%, var(--bg-dark) 90%);
+  transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.9s ease;
+}
+
+#intro.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-card {
+  text-align: center;
+  width: 100%;
+  max-width: 440px;
+}
+
+/* Tipografías Finas y Resaltadas */
+.title-script {
+  font-family: 'Alex Brush', cursive;
+  color: var(--gold-light);
+  font-size: clamp(54px, 16vw, 86px);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 255, 179, 0.6);
+  margin: 5px 0;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.title-serif {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 5px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.btn-royal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+  padding: 14px 32px;
+  width: 100%;
+  max-width: 280px;
+  border-radius: 0;
+  border: 1px solid var(--gold-tiara);
+  background: rgba(27, 51, 13, 0.6);
+  color: var(--gold-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.btn-royal::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(247, 213, 96, 0.4);
+}
+
+.btn-royal:active {
+  transform: scale(0.97);
+  background: rgba(247, 213, 96, 0.2);
+}
+
+/* Sitio Principal */
+#site {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  padding-bottom: 75px;
+}
+#site.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Navegación Móvil Fina */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+  z-index: 1000;
+  background: rgba(27, 51, 13, 0.94);
+  border-top: 1px solid var(--gold-tiara);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.mobile-nav a {
+  color: var(--gold-tiara);
+  text-decoration: none;
+  font-size: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.mobile-nav a svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Botón de Música Flotante */
+.music-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 900;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-tiara);
+  background: rgba(27, 51, 13, 0.85);
+  color: var(--gold-tiara);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.music-btn.playing {
+  animation: spin-slow 10s linear infinite;
+  box-shadow: 0 0 15px var(--gold-tiara);
+}
+
+@keyframes spin-slow { 100% { transform: rotate(360deg); } }
+
+/* Secciones */
+section {
+  position: relative;
+  min-height: 90vh;
+  padding: 50px 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.panel {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--gold-light);
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 6.5vw, 40px);
+  color: #ffffff;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  font-weight: 400;
+  font-style: italic;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.copy {
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #ffffff;
+  margin: 14px 0;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+/* Hero - Foto principal más grande */
+.hero {
+  min-height: 100vh;
+  padding-top: 30px;
+}
+
+.hero-photo-frame {
+  width: min(290px, 80vw);
+  height: min(390px, 98vw);
+  margin: 22px auto;
+  border: 1px solid var(--gold-tiara);
+  padding: 6px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.hero-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contador Regresivo Fino */
+.countdown-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 25px 0 5px;
+}
+
+.time-box {
+  background: rgba(27, 51, 13, 0.5);
+  border: 1px solid rgba(247, 213, 96, 0.6);
+  padding: 12px 2px;
+}
+
+.time-box span {
+  display: block;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--gold-light);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.time-box small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Tarjeta Clara de Máximo Contraste Estilo Pergamino */
+.paper-card {
+  background: #ffffff;
+  color: var(--text-dark);
+  border: 1px solid var(--gold-tiara);
+  padding: 35px 20px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+  position: relative;
+}
+
+.paper-card::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(184, 146, 40, 0.3);
+  pointer-events: none;
+}
+
+.paper-card h2, .paper-card h3 {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.paper-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 1px solid var(--gold-dark);
+}
+
+/* Cronograma Líneas Finas */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.timeline-item {
+  background: rgba(27, 51, 13, 0.5);
+  border: 1px solid rgba(247, 213, 96, 0.5);
+  padding: 16px 8px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-icon {
+  color: var(--gold-tiara);
+}
+
+.timeline-item b {
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+}
+
+/* Galería Grid con imágenes visibles */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  border: 1px solid var(--gold-tiara);
+  overflow: hidden;
+  position: relative;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+/* Animación Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<canvas id="canvas-fireflies"></canvas>
+
+<button class="music-btn" id="music-btn" aria-label="Reproducir Música">
+  <svg class="icon-svg" width="18" height="18" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+</button>
+<audio id="bg-audio" src="assets/Almost_There.mp3" preload="auto" loop></audio>
+
+<svg style="display: none;">
+  <symbol id="corner-filigree" viewBox="0 0 40 40">
+    <path d="M0,0 L15,0 C15,5 10,10 10,10 C20,10 30,20 30,30 C30,20 35,15 40,15 L40,0 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="5" cy="5" r="2" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<!-- INTRO PORTAL DE CORONACIÓN -->
+<div id="intro">
+  <div class="intro-card">
+    <div class="royal-frame">
+      <svg class="corner-svg corner-tl"><use href="#corner-filigree"/></svg>
+      <svg class="corner-svg corner-tr"><use href="#corner-filigree"/></svg>
+      <svg class="corner-svg corner-bl"><use href="#corner-filigree"/></svg>
+      <svg class="corner-svg corner-br"><use href="#corner-filigree"/></svg>
+
+      <div style="color: var(--gold-tiara); margin-bottom: 10px;">
+        <svg class="icon-svg" width="48" height="48" viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/></svg>
+      </div>
+      
+      <div class="title-serif">UNA NOCHE MÁGICA DE PRINCESA</div>
+      <div class="title-script">Ximena Mahanaim</div>
+      <p style="color: var(--gold-tiara); letter-spacing: 4px; font-size: 12px; font-family: 'Cormorant Garamond', serif;">MIS XV AÑOS</p>
+
+      <svg class="filigree-divider" viewBox="0 0 100 20">
+        <path d="M0 10 Q 25 20, 50 10 T 100 10" fill="none" stroke="currentColor" stroke-width="1"/>
+        <circle cx="50" cy="10" r="3" fill="currentColor"/>
+      </svg>
+
+      <p style="color: #ffffff; font-size: 15px; font-family: 'Cormorant Garamond', serif; font-style: italic;">"Pide un deseo a la estrella..."</p>
+      <button class="btn-royal" id="open-btn">ABRIR INVITACIÓN</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div id="site">
+
+  <section id="inicio" class="hero">
+    <div class="panel reveal">
+      <div class="royal-frame">
+        <svg class="corner-svg corner-tl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-tr"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-bl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-br"><use href="#corner-filigree"/></svg>
+
+        <div class="eyebrow">MIS XV AÑOS</div>
+        <div class="title-script">Ximena Mahanaim</div>
+        
+        <div class="hero-photo-frame">
+          <img src="https://scontent.fmex22-1.fna.fbcdn.net/v/t39.30808-6/811562494_2627799451023260_7055248730397056819_n.jpg?stp=dst-jpg_tt6&cstp=mx1086x1448&ctp=s1086x1448&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFUOBOe-jN9-KbL5gMT00ntJdEvfmlAEs8l0S9-aUASz9rApaR0dpbdkUgwmlhOGWPyepvatLKVhu9s6N4p48Bd&_nc_ohc=e0FZWHW2aG4Q7kNvwF6NVy4&_nc_oc=Adra1kXZqymNA4Q8YJaAcF2H59B7nJI1hcqV-in60rTiXvlaEKZNzvcMMqcPZUoB41wicS3FDf5i3ThkBjnw_Af4&_nc_zt=23&_nc_ht=scontent.fmex22-1.fna&_nc_gid=MY2UtrDvhMMQalH6Hu57_A&_nc_ss=7b2a8&oh=00_AQL5MlBP2XJ-9Ar0l-U5kCqAVOGjp1C0CnRKvwcopNEY9g&oe=6AAF777A" alt="Ximena Mahanaim">
+        </div>
+        
+        <div class="eyebrow" style="font-size: 13px; color: var(--gold-light); margin-top: 15px;">24 DE OCTUBRE DE 2026</div>
+        
+        <div class="countdown-container" id="countdown">
+          <div class="time-box"><span id="days">00</span><small>DÍAS</small></div>
+          <div class="time-box"><span id="hours">00</span><small>HRS</small></div>
+          <div class="time-box"><span id="minutes">00</span><small>MIN</small></div>
+          <div class="time-box"><span id="seconds">00</span><small>SEG</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="historia">
+    <div class="panel reveal">
+      <div class="royal-frame">
+        <svg class="corner-svg corner-tl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-tr"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-bl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-br"><use href="#corner-filigree"/></svg>
+
+        <div class="eyebrow">EL SUEÑO DE LA PRINCESA</div>
+        <h2>"Los sueños se hacen realidad..."</h2>
+        <p class="copy">Bajo la luz del cielo estrellado y envuelta en la magia de una noche inolvidable, ha llegado el momento de celebrar el comienzo de un hermoso capítulo en mi vida.</p>
+        <p class="copy">Te invito a compartir conmigo esta velada mágica de gala, rodeada de encanto, resplandor y recuerdos para siempre.</p>
+
+        <svg class="filigree-divider" viewBox="0 0 100 20">
+          <path d="M0 10 Q 25 0, 50 10 T 100 10" fill="none" stroke="currentColor" stroke-width="1"/>
+          <circle cx="50" cy="10" r="3" fill="currentColor"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="vestimenta">
+    <div class="panel reveal">
+      <div class="royal-frame">
+        <svg class="corner-svg corner-tl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-tr"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-bl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-br"><use href="#corner-filigree"/></svg>
+
+        <div class="eyebrow">CÓDIGO DE VESTIMENTA</div>
+        <h2>Etiqueta Rigurosa</h2>
+        <p class="title-script" style="font-size: 46px; color: var(--gold-light);">Gala Real</p>
+        
+        <div style="color: var(--gold-tiara); margin: 12px 0;">
+          <svg class="icon-svg" width="36" height="36" viewBox="0 0 24 24"><path d="M12 2l2.5 7.5H22l-6 4.5 2.5 7.5-6.5-5-6.5 5 2.5-7.5-6-4.5h7.5z"/></svg>
+        </div>
+
+        <p class="copy" style="border: 1px solid var(--gold-tiara); padding: 15px; background: rgba(27, 51, 13, 0.4); font-size: 13.5px;">
+          <strong style="color: var(--gold-light); font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 1px;">NOTA DE HONOR:</strong><br>
+          Los tonos Verde Pistache y Manzana están reservados exclusivamente para la quinceañera Ximena.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="familia">
+    <div class="panel reveal">
+      <div class="royal-frame">
+        <svg class="corner-svg corner-tl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-tr"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-bl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-br"><use href="#corner-filigree"/></svg>
+
+        <div class="eyebrow">CON LA BENDICIÓN DE MI FAMILIA</div>
+        <h2>Mis Padrinos</h2>
+        <p class="title-script" style="font-size: 42px;">Cirilo Reyes & Esther Arrelondo</p>
+        <p class="copy">Con el amor incondicional de mi madre y la guía amorosa de mi familia en este día tan soñado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CEREMONIA -->
+  <section id="ceremonia">
+    <div class="paper-card reveal" style="max-width: 600px; width: 100%;">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Iglesia_de_La_Compa%C3%B1%C3%ADa%2C_Quito%2C_Ecuador%2C_2015-07-22%2C_DD_149-151_HDR.JPG/3840px-Iglesia_de_La_Compa%C3%B1%C3%ADa%2C_Quito%2C_Ecuador%2C_2015-07-22%2C_DD_149-151_HDR.JPG?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="Iglesia Cristiana Restauración Norte" class="paper-img">
+      <div>
+        <div class="eyebrow" style="color: var(--gold-dark); text-shadow: none;">CEREMONIA RELIGIOSA</div>
+        <h3 style="font-size: 24px; color: var(--text-dark);">Iglesia Cristiana Restauración Norte</h3>
+        <p style="font-size: 18px; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: #386b12; margin: 8px 0;">16:30 HRS</p>
+        <p style="font-size: 14px; margin-bottom: 18px; line-height: 1.6; color: var(--text-dark);">Av. Juventino Rosas 13, Zona Escolar Oriente, Gustavo A. Madero, CDMX.</p>
+        <a class="btn-royal" style="background: var(--text-dark); color: var(--gold-light);" href="https://maps.app.goo.gl/hcRnXYhgJ4pusuB76" target="_blank">VER UBICACIÓN</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECEPCIÓN -->
+  <section id="celebracion">
+    <div class="paper-card reveal" style="max-width: 600px; width: 100%;">
+      <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80" alt="Salón Las Fuentes" class="paper-img">
+      <div>
+        <div class="eyebrow" style="color: var(--gold-dark); text-shadow: none;">RECEPCIÓN Y GALA</div>
+        <h3 style="font-size: 24px; color: var(--text-dark);">Salón Las Fuentes</h3>
+        <p style="font-size: 18px; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: #386b12; margin: 8px 0;">19:00 HRS</p>
+        <p style="font-size: 14px; margin-bottom: 18px; line-height: 1.6; color: var(--text-dark);">Exc. Cruz de Lorena 371, Lázaro Cárdenas 2a. Secc., Tlalnepantla, Méx.</p>
+        <a class="btn-royal" style="background: var(--text-dark); color: var(--gold-light);" href="https://maps.app.goo.gl/yj8KgRkk9oG2s2cZ8" target="_blank">VER UBICACIÓN</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="programa">
+    <div class="panel reveal">
+      <div class="royal-frame">
+        <svg class="corner-svg corner-tl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-tr"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-bl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-br"><use href="#corner-filigree"/></svg>
+
+        <div class="eyebrow">ORDEN DE LA NOCHE</div>
+        <h2>Programa Real</h2>
+        
+        <div class="timeline-grid">
+          <div class="timeline-item">
+            <svg class="icon-svg timeline-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/></svg>
+            <b>1. Entrada Triunfal</b>
+          </div>
+          <div class="timeline-item">
+            <svg class="icon-svg timeline-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+            <b>2. Fotografía</b>
+          </div>
+          <div class="timeline-item">
+            <svg class="icon-svg timeline-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/></svg>
+            <b>3. Obsequios</b>
+          </div>
+          <div class="timeline-item">
+            <svg class="icon-svg timeline-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.55 3.89 3.56 4.23V22h2.88v-8.77C11.45 12.89 13 11.12 13 9V2h-2v7zm8-7v8h2V2h-2zm0 10v10h2V12h-2z"/></svg>
+            <b>4. Banquete</b>
+          </div>
+          <div class="timeline-item">
+            <svg class="icon-svg timeline-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            <b>5. Vals de Gala</b>
+          </div>
+          <div class="timeline-item">
+            <svg class="icon-svg timeline-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            <b>6. Apertura de Baile</b>
+          </div>
+          <div class="timeline-item">
+            <svg class="icon-svg timeline-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6 10H6c-1.1 0-2 .9-2 2v2h16v-2c0-1.1-.9-2-2-2z"/></svg>
+            <b>7. Pastel Real</b>
+          </div>
+          <div class="timeline-item">
+            <svg class="icon-svg timeline-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M5 2v6c0 2.21 1.79 4 4 4h.5l.5 10h4l.5-10h.5c2.21 0 4-1.79 4-4V2H5zm12 4H7V4h10v2z"/></svg>
+            <b>8. Brindis de Honor</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA CORREGIDA -->
+  <section id="galeria">
+    <div class="panel reveal">
+      <div class="royal-frame">
+        <svg class="corner-svg corner-tl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-tr"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-bl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-br"><use href="#corner-filigree"/></svg>
+
+        <div class="eyebrow">RECUERDOS</div>
+        <h2>Galería</h2>
+        
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="https://scontent.fmex23-1.fna.fbcdn.net/v/t39.30808-6/810594934_2627799447689927_1967539526499489615_n.jpg?stp=dst-jpg_tt6&cstp=mx1448x1086&ctp=s1448x1086&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFjJ4KJeU9qHqkxJ8AfM16woIo0_f5QWx-gijT9_lBbHw2K2s5J9gzuLKLAMyvL-AwBcICGAuOSVbBLxyTfDh3g&_nc_ohc=iZnbH4hfsmYQ7kNvwGp-KfC&_nc_oc=AdqOqrSZzHp7AHu2tEuNcioV5ljhLwUf2Y4xAPPAN7YWbhae7HMLHk-vhbLhNBnlNGOGJYCwNIuG0Ia8A8UzHrYW&_nc_zt=23&_nc_ht=scontent.fmex23-1.fna&_nc_gid=oy2vOXVfybXEDp7aVdlpGg&_nc_ss=7b2a8&oh=00_AQJYVZjhlMMQ_yvI9BAjWcObsB8kc2rNe0JdNyCAtB0jSw&oe=6AAF8671" alt="Recuerdo Ximena 1">
+          </div>
+          <div class="gallery-item">
+            <img src="https://scontent.fmex31-1.fna.fbcdn.net/v/t39.30808-6/811304219_2627799441023261_1460145623271481278_n.jpg?stp=dst-jpg_tt6&cstp=mx1086x1449&ctp=s1086x1449&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHXtXzz89rhOM_mfmaWP9BSLr-t5LXCz4Uuv63ktcLPhSIPZ0l4yWqmCaQOAshJFQ6QioollK2D-va4IS8ILU1q&_nc_ohc=ZCdmz7r6aRYQ7kNvwF7eOnT&_nc_oc=AdoyH4BerAcyt9IqxS6dNabOO3vKhDi9VOxT3RuqP8i330P-HnDng4UbU28M9evp9wwyYI33tHcwTHr-nwkkIK7M&_nc_zt=23&_nc_ht=scontent.fmex31-1.fna&_nc_gid=-0X3Di3VUyFT4pTnv92ddg&_nc_ss=7b2a8&oh=00_AQLH6xQ0PxnT6gaGxlhbr1LV9TyAsuitHqGU7qaOxjhuZQ&oe=6AAF8E98" alt="Recuerdo Ximena 2">
+          </div>
+          <div class="gallery-item">
+            <img src="https://scontent.fmex28-1.fna.fbcdn.net/v/t39.30808-6/813362462_2627799514356587_278384840898609394_n.jpg?stp=dst-jpg_tt6&cstp=mx1086x1449&ctp=s1086x1449&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG6I9q62XG-lqh2v6ZT-uwj7qXhWxBDKxzupeFbEEMrHADa-galxIbxWkuCyMhANpyZS5U5JwXQEnkHjBMlD2KZ&_nc_ohc=TsOXiFu3vKQQ7kNvwH0ufvC&_nc_oc=AdqQuGoB3cSeQAUmS3cOTbo56YIT-sJkXsYkijfVuh3ozPii9RdAMcSC0dm_XtaYsCpsZmWPWro3ebC7axuhTVjq&_nc_zt=23&_nc_ht=scontent.fmex28-1.fna&_nc_gid=YnPvfNEw-_vKnmPnmv0EJA&_nc_ss=7b2a8&oh=00_AQIv_A7okjBdiaOUgo9VtpD6sR5vuxqTSnjJjuc6n-sDKQ&oe=6AAF6B6F" alt="Recuerdo Ximena 3">
+          </div>
+          <div class="gallery-item">
+            <img src="https://scontent.fmex36-1.fna.fbcdn.net/v/t39.30808-6/813332939_2627799521023253_8495581858117426684_n.jpg?stp=dst-jpg_tt6&cstp=mx1086x1448&ctp=s1086x1448&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG9g_N-7kBXNbvgpThlA-ME2lfuoO_0FWfaV-6g7_QVZxv3g3UYWZQxl_3vw8xMlmBeRUIq2WdmHcsPED4ZiOZ7&_nc_ohc=jKUGWeT88dgQ7kNvwFXzc-i&_nc_oc=AdppAw3lB6WeeUMyM1P5p3AdmTBJTpE6lRP8ttZOxx-5K89qxeIDFfsAyCsgivnwavxnxW1O_W166rZneDR1RVrV&_nc_zt=23&_nc_ht=scontent.fmex36-1.fna&_nc_gid=zKJ4VS-5MGiOjQYErlp_6w&_nc_ss=7b2a8&oh=00_AQKExLQ72rvYgl_WFEB7uPaNpnLXvmJioKLbZPS4Gr8Ltw&oe=6AAF77E8" alt="Recuerdo Ximena 4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="confirmacion">
+    <div class="panel reveal">
+      <div class="royal-frame">
+        <svg class="corner-svg corner-tl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-tr"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-bl"><use href="#corner-filigree"/></svg>
+        <svg class="corner-svg corner-br"><use href="#corner-filigree"/></svg>
+
+        <div class="eyebrow">CONFIRMACIÓN DE ASISTENCIA</div>
+        <h2>¿Nos Acompañas?</h2>
+        <p class="copy">Por favor confirma tu presencia antes del <span style="color: var(--gold-light); font-family: 'Cormorant Garamond', serif; font-size: 18px;">30 de Septiembre de 2026</span>.</p>
+        
+        <a class="btn-royal" href="https://wa.me/525628548826?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%20XV%20a%C3%B1os%20de%20Ximena%20Mahanaim.%20%C2%A1Nos%20vemos%20para%20celebrar!" target="_blank">
+          CONFIRMAR POR WHATSAPP
+        </a>
+
+        <svg class="filigree-divider" viewBox="0 0 100 20">
+          <path d="M0 10 Q 25 20, 50 10 T 100 10" fill="none" stroke="currentColor" stroke-width="1"/>
+          <circle cx="50" cy="10" r="3" fill="currentColor"/>
+        </svg>
+
+        <div class="eyebrow">MESA DE REGALOS</div>
+        <h2>Detalles de Regalo</h2>
+        <p class="copy" style="font-size: 14px; margin-bottom: 18px;">Tu presencia es mi mayor regalo, pero si deseas hacerme un obsequio:</p>
+        <a class="btn-royal" href="https://www.amazon.com.mx/registries/gl/guest-view/3AQIENGVSKRA8?ref_=cm_sw_r_cp_ud_ggr-subnav-share_YDHEAEH6PE2SPMP96S4B" target="_blank">
+          MESA EN AMAZON
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="mobile-nav">
+    <a href="#inicio">
+      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      Inicio
+    </a>
+    <a href="#ceremonia">
+      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.51L20.5 19h-17L12 5.51z"/></svg>
+      Lugar
+    </a>
+    <a href="#programa">
+      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/></svg>
+      Programa
+    </a>
+    <a href="#confirmacion">
+      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      RSVP
+    </a>
+  </nav>
+
+</div>
+
+<script>
+const canvas = document.getElementById('canvas-fireflies');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const fireflies = Array.from({ length: 30 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  radius: Math.random() * 2 + 0.8,
+  alpha: Math.random(),
+  speedAlpha: (Math.random() * 0.015 + 0.004) * (Math.random() < 0.5 ? 1 : -1),
+  vx: (Math.random() - 0.5) * 0.3,
+  vy: (Math.random() - 0.5) * 0.3
+}));
+
+function animateFireflies() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  fireflies.forEach(f => {
+    f.x += f.vx;
+    f.y += f.vy;
+    f.alpha += f.speedAlpha;
+
+    if (f.alpha <= 0 || f.alpha >= 1) f.speedAlpha *= -1;
+    if (f.x < 0) f.x = canvas.width;
+    if (f.x > canvas.width) f.x = 0;
+    if (f.y < 0) f.y = canvas.height;
+    if (f.y > canvas.height) f.y = 0;
+
+    ctx.beginPath();
+    ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 179, ${Math.max(0, f.alpha)})`;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = "#ffffb3";
+    ctx.fill();
+  });
+  requestAnimationFrame(animateFireflies);
+}
+animateFireflies();
+
+const intro = document.getElementById('intro');
+const site = document.getElementById('site');
+const openBtn = document.getElementById('open-btn');
+const bgAudio = document.getElementById('bg-audio');
+const musicBtn = document.getElementById('music-btn');
+let isPlaying = false;
+
+function toggleMusic() {
+  if (isPlaying) {
+    bgAudio.pause();
+    musicBtn.classList.remove('playing');
+    isPlaying = false;
+  } else {
+    bgAudio.play().then(() => {
+      musicBtn.classList.add('playing');
+      isPlaying = true;
+    }).catch(e => console.log("Audio play blocked", e));
+  }
+}
+
+openBtn.addEventListener('click', () => {
+  intro.classList.add('hide');
+  site.classList.add('active');
+  toggleMusic();
+});
+
+musicBtn.addEventListener('click', toggleMusic);
+
+const eventDate = new Date('October 24, 2026 16:30:00').getTime();
+function updateCountdown() {
+  const now = new Date().getTime();
+  const diff = eventDate - now;
+  if (diff > 0) {
+    document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+    document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+    document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+    document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+  }
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
